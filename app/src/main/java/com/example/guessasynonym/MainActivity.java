@@ -21,6 +21,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     private RequestQueue queue;
@@ -74,15 +75,18 @@ public class MainActivity extends AppCompatActivity {
                             if (jArrayLen > 0) {
                                 synWord1 = jArray.getString(0);
                                 //hide word
+                                synonym1.setText(hide(synWord1));
 
                             }
                             if (jArrayLen > 1) {
                                 synWord2 = jArray.getString(1);
-                                //hide
+                                //hide word
+                                synonym2.setText(hide(synWord2));
                             }
                             if (jArrayLen > 2) {
                                 synWord3 = jArray.getString(2);
-                                //hide
+                                //hide word
+                                synonym3.setText(hide(synWord3));
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -123,4 +127,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
     //hide function
+    private static String hide(String input) {
+        // replace all characters in input string with "-" except one random character
+        int length = input.length();
+        StringBuilder output = new StringBuilder();
+
+        output.append(input);
+        Random random = new Random();
+
+        int newRandom = random.nextInt(length);
+
+        for (int i = 0; i < length; i++) {
+            if (i != newRandom) {
+                output.setCharAt(i, '-');
+            }
+        }
+        return output.toString();
+    }
 }
