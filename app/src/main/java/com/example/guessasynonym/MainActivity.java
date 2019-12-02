@@ -25,7 +25,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     private RequestQueue queue;
-    private String urlFormat = "https://wordsapiv1.p.rapidapi.com/words/";
+    private String urlFormat = "https://wordsapiv1.p.rapidapi.com/words/%s/synonyms";
 
     private EditText input;
     private EditText inputAnswer;
