@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+
 public class MainActivity extends AppCompatActivity {
     private RequestQueue queue;
     private String urlFormat = "https://wordsapiv1.p.rapidapi.com/words/%s/synonyms";
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         getSynonyms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = String.format(urlFormat, inputAnswer.getText().toString());
+                String url = String.format(urlFormat, input.getText().toString());
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
