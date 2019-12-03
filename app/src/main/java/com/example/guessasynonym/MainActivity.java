@@ -139,8 +139,11 @@ public class MainActivity extends AppCompatActivity {
         int newRandom = random.nextInt(length);
 
         for (int i = 0; i < length; i++) {
-            if (i != newRandom) {
+            if (i == newRandom) {
                 output.setCharAt(i, '-');
+                output.setCharAt(length - 1, '-');
+                output.setCharAt(0, '-');
+
             }
         }
         return output.toString();
