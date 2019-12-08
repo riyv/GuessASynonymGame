@@ -1,6 +1,4 @@
 package com.example.guessasynonym;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -138,14 +136,17 @@ public class gas extends MainActivity {
                     status.setText("You guessed one of the synonyms!");
                     counter++;
                     score.setText("Score: " + counter);
+                    synWord1 = "done";
                 } else if (answer.equals(synWord2)) {
                     status.setText("You guessed one of the synonyms!");
                     counter++;
                     score.setText("Score: " + counter);
+                    synWord2 = "done";
                 } else if (answer.equals(synWord3)) {
                     status.setText("You guessed one of the synonyms!");
                     counter++;
                     score.setText("Score: " + counter);
+                    synWord3 = "done";
                 }
                 /*String value = countDown.getText().toString();
                 int time = Integer.parseInt(value);
@@ -153,7 +154,7 @@ public class gas extends MainActivity {
                     Intent startWin = new Intent(gas.this, win.class);
                     startActivity(startWin); */
                  else {
-                    status.setText("You didn't guess any of the synonyms :(");
+                    status.setText("Try again :(");
                     //Intent startLose = new Intent(gas.this, lose.class);
                     //startActivity(startLose);
                 }
