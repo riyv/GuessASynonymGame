@@ -39,12 +39,30 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void butt() {
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button easy = (Button) findViewById(R.id.easy);
+        easy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, gas.class));
             }
         });
+
+        Button medium = (Button) findViewById(R.id.medium);
+        medium.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, gas.class));
+            }
+        });
+
+        Button hard = (Button) findViewById(R.id.hard);
+        hard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, gas.class));
+            }
+        });
+
+
     }
 }
