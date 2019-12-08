@@ -2,6 +2,7 @@ package com.example.guessasynonym;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,6 +40,11 @@ public class gas extends MainActivity {
     private String synWord2;
     private String synWord3;
 
+    private TextView countDown;
+    private CountDownTimer timer;
+    private long timeInMil = 600000;
+    private boolean timeTF;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gas);
@@ -57,6 +63,16 @@ public class gas extends MainActivity {
         synonym3 = findViewById(R.id.synonym3);
 
         status = findViewById(R.id.status);
+
+        countDown = findViewById(R.id.timer);
+        countDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timerStartStop();
+            }
+        });
+
+        updateTimer();
 
 
         final RequestQueue queue = Volley.newRequestQueue(this);
@@ -129,6 +145,52 @@ public class gas extends MainActivity {
         });
 
     }
+
+    private void timerStartStop() {
+        if (!timeTF) {
+            startTimer();
+        } else {
+            stopTimer();
+        }
+    }
+
+    public void startTimer() {
+        timer = new CountDownTimer(timeInMil, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeInMil = millisUntilFinished;
+                updateTimer();
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
+        timeTF = true;
+    }
+
+    public void stopTimer() {
+        timer.cancel();
+        timeTF = false;
+    }
+
+    public void updateTimer() {
+        int minutes = (int) timeInMil / 600000;
+        int seconds = (int) timeInMil % 60000 / 1000;
+
+        String time;
+        time = "" + minutes;
+        time += ":";
+
+        if (seconds < 10) {
+            time += "0";
+        }
+        time += seconds;
+        countDown.setText(time);
+    }
+
+
 
     //hide function
     private static String hide(String input) {
