@@ -1,4 +1,15 @@
 package com.example.guessasynonym;
 
-public class win {
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class win extends AppCompatActivity {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.win);
+
+
+
+    }
 }

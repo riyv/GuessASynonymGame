@@ -1,10 +1,13 @@
 package com.example.guessasynonym;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -21,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class gas extends MainActivity {
+public class gas extends AppCompatActivity {
     private RequestQueue queue;
     private String urlFormat = "https://wordsapiv1.p.rapidapi.com/words/%s/synonyms";
 
@@ -42,8 +45,9 @@ public class gas extends MainActivity {
 
     private TextView countDown;
     private CountDownTimer timer;
-    private long timeInMil = 600000;
+    private long timeInMil = 60000;
     private boolean timeTF;
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +71,7 @@ public class gas extends MainActivity {
         countDown = findViewById(R.id.timer);
 
         score = findViewById(R.id.counter);
+
 
         final RequestQueue queue = Volley.newRequestQueue(this);
         getSynonyms.setOnClickListener(new View.OnClickListener() {
@@ -147,27 +152,38 @@ public class gas extends MainActivity {
                     counter++;
                     score.setText("Score: " + counter);
                     synWord3 = "done";
-                }
-                /*String value = countDown.getText().toString();
-                int time = Integer.parseInt(value);
-                if (counter == 3 && time >= 0) {
-                    Intent startWin = new Intent(gas.this, win.class);
-                    startActivity(startWin); */
-                 else {
+                } else {
                     status.setText("Try again :(");
-                    //Intent startLose = new Intent(gas.this, lose.class);
-                    //startActivity(startLose);
                 }
+                System.out.println("here");
+                String value = countDown.getText().toString();
+                int time = Integer.parseInt(value);
+                if (time != 0 && counter == 3) { //still going
+                    System.out.println("inside if");
+                    startActivity(new Intent(getApplicationContext(), win.class));
+                    finish();
+
+                }
+                if (time == 0 && counter != 3) { //ran out of time
+                    startActivity(new Intent(getApplicationContext(), lose.class));
+
+                }
+
             }
         });
 
+
+
+
+
     }
+
 
     private void timerStartStop() {
         if (!timeTF) {
             startTimer();
         } //else {
-          //  stopTimer();
+        //  stopTimer();
         //}
     }
 
@@ -193,12 +209,12 @@ public class gas extends MainActivity {
     }*/
 
     public void updateTimer() {
-        int minutes = (int) timeInMil / 600000;
+
         int seconds = (int) timeInMil % 60000 / 1000;
 
         String time;
-        time = "" + minutes;
-        time += ":";
+        time = "";
+        //time += ":";
 
         if (seconds < 10) {
             time += "0";
@@ -206,7 +222,6 @@ public class gas extends MainActivity {
         time += seconds;
         countDown.setText(time);
     }
-
 
 
     //hide function
@@ -231,4 +246,8 @@ public class gas extends MainActivity {
         return output.toString();
         //
     }
+
+
+
 }
+
