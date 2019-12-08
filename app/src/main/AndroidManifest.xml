@@ -23,6 +23,16 @@
                 <action android:name="android.intent.action.RUN"/>
             </intent-filter>
         </activity>
+        <activity android:name=".win">
+            <intent-filter>
+                <action android:name="android.intent.action.RUN"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".lose">
+            <intent-filter>
+                <action android:name="android.intent.action.RUN"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

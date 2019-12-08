@@ -1,6 +1,6 @@
 package com.example.guessasynonym;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -35,6 +35,8 @@ public class gas extends MainActivity {
     private TextView status;
     private Button getSynonyms;
     private Button check;
+    private TextView score;
+    private int counter = 0;
 
     private String synWord1;
     private String synWord2;
@@ -65,20 +67,15 @@ public class gas extends MainActivity {
         status = findViewById(R.id.status);
 
         countDown = findViewById(R.id.timer);
-        countDown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                timerStartStop();
-            }
-        });
 
-        updateTimer();
-
+        score = findViewById(R.id.counter);
 
         final RequestQueue queue = Volley.newRequestQueue(this);
         getSynonyms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                timerStartStop();
+                updateTimer();
                 String url = String.format(urlFormat, input.getText().toString());
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                     @Override
@@ -132,14 +129,33 @@ public class gas extends MainActivity {
             }
         });
 
+
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String answer = inputAnswer.getText().toString();
-                if (answer.equals(synWord1) || answer.equals(synWord2) || answer.equals(synWord3)) {
+                if (answer.equals(synWord1)) {
                     status.setText("You guessed one of the synonyms!");
-                } else {
+                    counter++;
+                    score.setText("Score: " + counter);
+                } else if (answer.equals(synWord2)) {
+                    status.setText("You guessed one of the synonyms!");
+                    counter++;
+                    score.setText("Score: " + counter);
+                } else if (answer.equals(synWord3)) {
+                    status.setText("You guessed one of the synonyms!");
+                    counter++;
+                    score.setText("Score: " + counter);
+                }
+                /*String value = countDown.getText().toString();
+                int time = Integer.parseInt(value);
+                if (counter == 3 && time >= 0) {
+                    Intent startWin = new Intent(gas.this, win.class);
+                    startActivity(startWin); */
+                 else {
                     status.setText("You didn't guess any of the synonyms :(");
+                    //Intent startLose = new Intent(gas.this, lose.class);
+                    //startActivity(startLose);
                 }
             }
         });
@@ -149,9 +165,9 @@ public class gas extends MainActivity {
     private void timerStartStop() {
         if (!timeTF) {
             startTimer();
-        } else {
-            stopTimer();
-        }
+        } //else {
+          //  stopTimer();
+        //}
     }
 
     public void startTimer() {
@@ -170,10 +186,10 @@ public class gas extends MainActivity {
         timeTF = true;
     }
 
-    public void stopTimer() {
+    /*public void stopTimer() {
         timer.cancel();
         timeTF = false;
-    }
+    }*/
 
     public void updateTimer() {
         int minutes = (int) timeInMil / 600000;
