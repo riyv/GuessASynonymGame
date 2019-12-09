@@ -110,7 +110,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter any word! Then try to guess one of the synonyms!"
+        android:text="Enter any word! Then try to guess all of the synonyms!"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
