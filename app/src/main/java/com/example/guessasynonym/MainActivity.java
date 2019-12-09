@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         easy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                gas.setTime(180000);
                 startActivity(new Intent(MainActivity.this, gas.class));
                 //timer.setText("2:00");
             }
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         medium.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                gas.setTime(120000);
                 startActivity(new Intent(MainActivity.this, gas.class));
             }
         });
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         hard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                gas.setTime(60000);
                 startActivity(new Intent(MainActivity.this, gas.class));
             }
         });

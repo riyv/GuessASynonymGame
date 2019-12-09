@@ -45,7 +45,7 @@ public class gas extends AppCompatActivity {
 
     private TextView countDown;
     private CountDownTimer timer;
-    private long timeInMil = 60000;
+    public static long timeInMil;
     private boolean timeTF;
 
 
@@ -166,16 +166,11 @@ public class gas extends AppCompatActivity {
                 }
                 if (time == 0 && counter != 3) { //ran out of time
                     startActivity(new Intent(getApplicationContext(), lose.class));
-
                 }
 
             }
         });
-
-
-
-
-
+        
     }
 
 
@@ -210,7 +205,7 @@ public class gas extends AppCompatActivity {
 
     public void updateTimer() {
 
-        int seconds = (int) timeInMil % 60000 / 1000;
+        int seconds = (int) timeInMil / 1000;
 
         String time;
         time = "";
@@ -247,6 +242,9 @@ public class gas extends AppCompatActivity {
         //
     }
 
+    public static long setTime(long setTimeInMil) {
+        return timeInMil = setTimeInMil;
+    }
 
 
 }
