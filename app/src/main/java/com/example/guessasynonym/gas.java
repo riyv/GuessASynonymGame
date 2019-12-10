@@ -251,8 +251,5 @@ public class gas extends AppCompatActivity {
     public static long setTime(long setTimeInMil) {
         return timeInMil = setTimeInMil;
     }
-
-
-
 }
 
