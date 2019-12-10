@@ -81,6 +81,7 @@ public class gas extends AppCompatActivity {
                 updateTimer();
                 String url = String.format(urlFormat, input.getText().toString());
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+
                     @Override
                     public void onResponse(String response) {
                         JSONObject jObject;
@@ -133,6 +134,7 @@ public class gas extends AppCompatActivity {
         });
 
 
+
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -164,14 +166,19 @@ public class gas extends AppCompatActivity {
                     finish();
 
                 }
-                if (time == 0 && counter != 3) { //ran out of time
+                if (time <= 1 && counter != 3) { //ran out of time
                     startActivity(new Intent(getApplicationContext(), lose.class));
                 }
 
+
             }
         });
+
+
+
         
     }
+
 
 
     private void timerStartStop() {
@@ -207,8 +214,7 @@ public class gas extends AppCompatActivity {
 
         int seconds = (int) timeInMil / 1000;
 
-        String time;
-        time = "";
+        String time = "";
         //time += ":";
 
         if (seconds < 10) {
@@ -245,6 +251,7 @@ public class gas extends AppCompatActivity {
     public static long setTime(long setTimeInMil) {
         return timeInMil = setTimeInMil;
     }
+
 
 
 }

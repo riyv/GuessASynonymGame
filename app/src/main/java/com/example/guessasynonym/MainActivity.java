@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         butt();
 
 
+
     }
     public void butt() {
         Button easy = (Button) findViewById(R.id.easy);
@@ -54,4 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 }
