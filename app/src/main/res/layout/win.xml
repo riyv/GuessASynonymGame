@@ -5,27 +5,29 @@
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#78B950"
+    android:background="#FFFFFF"
     android:orientation="vertical"
     tools:context=".win">
-
-    <TextView
-        android:id="@+id/winner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="u Wiener"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/playAgain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="583dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/rounded_button"
         android:text="PLAY AGAIN"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/winner" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="420dp"
+        android:layout_height="751dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/win" />
 </androidx.constraintlayout.widget.ConstraintLayout>
